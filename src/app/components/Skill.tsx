@@ -1,6 +1,6 @@
 import { SkillProp } from '../Types';
 
-export const Skill = ({ skill }: { skill: SkillProp }): any => (
+export const Skill = ({ skill }: { skill: SkillProp }) => (
   <div>
     <p>
       <b>{skill.skillName}</b>

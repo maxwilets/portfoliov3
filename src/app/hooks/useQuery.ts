@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 export function useFetchGql(query: string, component: string, id: string, preview: boolean) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
