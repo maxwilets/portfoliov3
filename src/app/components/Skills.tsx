@@ -15,9 +15,9 @@ export const ALL_SKILLS_QUERY =`
   }
 `;
 
-export default function Skills(): any {
+export default function Skills(): unknown {
   
-  const { data, loading, error } = useFetchGql(ALL_SKILLS_QUERY, false);
+  const { data, loading } = useFetchGql(ALL_SKILLS_QUERY, "", "", false);
   if (loading) return <p>Loading...</p>;
   // if (error) return <DisplayError error={error} />;
   // if (error) return <h1>Error: {error: Error}</h1>

@@ -1,9 +1,8 @@
 import React from 'react';
 import {
-  VerticalTimeline,
   VerticalTimelineElement,
 } from 'react-vertical-timeline-component';
-import { motion } from 'framer-motion';
+// import { motion } from 'framer-motion';
 
 import 'react-vertical-timeline-component/style.min.css';
 
@@ -11,8 +10,19 @@ import 'react-vertical-timeline-component/style.min.css';
 // import { experiences } from '../constants';
 // import { SectionWrapper } from '../hoc';
 // import { textVariant } from '../utils/motion';
+interface Experience {
+  date: string;
+  iconBg: string;
+  icon: string;
+  company_name: string;
+  title: string;
+  points: string[];
+}
 
-const ExperienceCard = ({ experience }) => (
+interface ExperienceCardProps {
+  experience: Experience;
+}
+const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => (
   <VerticalTimelineElement
     contentStyle={{
       background: '#1d1836',
@@ -53,20 +63,20 @@ const ExperienceCard = ({ experience }) => (
   </VerticalTimelineElement>
 );
 
-const Experience = () => (
-  <>
-    <motion.div variants={textVariant()}>
-      <p className={styles.sectionSubText}>What I have done so far</p>
-      <h2 className={styles.sectionHeadText}>Work Experience.</h2>
-    </motion.div>
-    <div className="mt-20 flex flex-col">
-      <VerticalTimeline>
-        {experiences.map((experience, index) => (
-          <ExperienceCard key={index} experience={experience} />
-        ))}
-      </VerticalTimeline>
-    </div>
-  </>
-);
+// const Experience = () => (
+//   <>
+//     <motion.div variants={textVariant()}>
+//       <p className={styles.sectionSubText}>What I have done so far</p>
+//       <h2 className={styles.sectionHeadText}>Work Experience.</h2>
+//     </motion.div>
+//     <div className="mt-20 flex flex-col">
+//       <VerticalTimeline>
+//         {experiences.map((experience, index) => (
+//           <ExperienceCard key={index} experience={experience} />
+//         ))}
+//       </VerticalTimeline>
+//     </div>
+//   </>
+// );
 
-export default SectionWrapper(Experience, 'work');
+// export default SectionWrapper(Experience, 'work');
