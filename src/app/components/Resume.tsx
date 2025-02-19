@@ -22,7 +22,7 @@ interface Experience {
 interface ExperienceCardProps {
   experience: Experience;
 }
-const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => (
+export const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => (
   <VerticalTimelineElement
     contentStyle={{
       background: '#1d1836',
