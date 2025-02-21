@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import createApolloClient from "./lib/apolloClient";
 import { Resume } from "./components/Resume";
 import { Skills } from "./components/Skills";
+import { Projects } from "./components/Project";
 
 const GET_PAGE = gql`
   query GetPage($slug: String!) {
@@ -21,6 +22,9 @@ const GET_PAGE = gql`
           sys { id }
         }
         skillsContainer {
+          sys { id }
+        }
+        projectContainer {
           sys { id }
         }
       }   
@@ -59,6 +63,7 @@ export default async function Home() {
   const heroId = data?.pageCollection?.items[0]?.hero?.sys?.id;
   const resumeId = data?.pageCollection?.items[0]?.resumeContainer?.sys?.id;
   const skillsId = data?.pageCollection?.items[0]?.skillsContainer?.sys?.id;
+  const projectId = data?.pageCollection?.items[0]?.projectContainer?.sys?.id;
   const {data: resumeData, error: resError} = await client.query({
     query: GET_RESUME,
     variables: { id: resumeId }
@@ -67,10 +72,11 @@ export default async function Home() {
   if (resError) { console.log(resError)}
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+      <main className="flex flex-col gap-8 row-start-2 max-width-900 items-center sm:items-start">
         <Hero  id={heroId} />
         <Resume items={resumeItems}/>
         <Skills id={skillsId} />
+        <Projects id={projectId} />
       </main>
     </div>
   );
