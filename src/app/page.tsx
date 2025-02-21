@@ -4,6 +4,7 @@ import { gql } from "@apollo/client";
 import Hero from "./components/Hero";
 import createApolloClient from "./lib/apolloClient";
 import { Resume } from "./components/Resume";
+import { Skills } from "./components/Skills";
 
 const GET_PAGE = gql`
   query GetPage($slug: String!) {
@@ -17,6 +18,9 @@ const GET_PAGE = gql`
           }
         }
         resumeContainer {
+          sys { id }
+        }
+        skillsContainer {
           sys { id }
         }
       }   
@@ -54,6 +58,7 @@ export default async function Home() {
   console.log("error", error)
   const heroId = data?.pageCollection?.items[0]?.hero?.sys?.id;
   const resumeId = data?.pageCollection?.items[0]?.resumeContainer?.sys?.id;
+  const skillsId = data?.pageCollection?.items[0]?.skillsContainer?.sys?.id;
   const {data: resumeData, error: resError} = await client.query({
     query: GET_RESUME,
     variables: { id: resumeId }
@@ -65,6 +70,7 @@ export default async function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Hero  id={heroId} />
         <Resume items={resumeItems}/>
+        <Skills id={skillsId} />
       </main>
     </div>
   );
