@@ -1,4 +1,6 @@
+ 
 import { gql } from "@apollo/client";
+ 
 import Hero from "./components/Hero";
 import createApolloClient from "./lib/apolloClient";
 import { Resume } from "./components/Resume";
