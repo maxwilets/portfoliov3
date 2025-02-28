@@ -18,7 +18,7 @@ export const ProjectCard = ({
   const {description, title, githubLink, tagsCollection} = project;
 
   return (
-    <motion.div variants={fadeIn('up', 'spring', index * 0.5, 0.75)}>
+    <motion.div className="height-full" variants={fadeIn('up', 'spring', index * 0.5, 0.75)}>
       <div
         className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
       >
@@ -28,23 +28,29 @@ export const ProjectCard = ({
             alt="project_image"
             width="300"
             height="350"
+            lazyBoundary=""
             className="w-full h-full object-cover rounded-2xl"
           />
 
-          <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
+          {
+           githubLink && (
+             <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
             <div
               onClick={() => window.open(githubLink, '_blank')}
-              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+              className="black-gradient bg-black w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
             >
               <Image
                 src={github}
                 alt="source code"
                 width="50"
                 height="50"
-                className="w-1/2 h-1/2 object-contain"
+                className="object-contain"
               />
             </div>
           </div>
+           
+           )          
+          }
         </div>
 
         <div className="mt-5">

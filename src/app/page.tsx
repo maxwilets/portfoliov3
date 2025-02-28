@@ -6,6 +6,7 @@ import createApolloClient from "./lib/apolloClient";
 import { Resume } from "./components/Resume";
 import { Skills } from "./components/Skills";
 import { Projects } from "./components/Project";
+import  Nav  from './components/Nav';
 
 const GET_PAGE = gql`
   query GetPage($slug: String!) {
@@ -71,12 +72,14 @@ export default async function Home() {
   const resumeItems = resumeData?.resumeContainer?.positionCollection?.items
   if (resError) { console.log(resError)}
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="bg-gray-900 grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+       <Nav />
       <main className="flex flex-col gap-8 row-start-2 max-width-900 items-center sm:items-start">
-        <Hero  id={heroId} />
-        <Resume items={resumeItems}/>
+      
+        <div id="about"><Hero  id={heroId} /></div>
+        <div id="work"><Resume items={resumeItems}/></div>
         <Skills id={skillsId} />
-        <Projects id={projectId} />
+        <div id="contact"><Projects id={projectId} /></div>
       </main>
     </div>
   );

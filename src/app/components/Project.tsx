@@ -42,19 +42,15 @@ export const Projects = async ({ id }: { id: string }) => {
       <p className={styles.sectionSubText}>My Projects</p>
       <h2 className={styles.sectionHeadText}>Projects.</h2>
     </div>
-    <div className="w-full flex flex-col items-center  max-w-[1100px] mx-auto">
-      <p className="text-lg leading-relaxed items-center">
-        These arewef weoifja oawf oawfj ojfoawp efji awopefj opawejoapefj pw
-        These arewef weoifja oawf oawfj ojfoawp efji awopefj opawejoapefj
-        pwThese arewef weoifja oawf oawfj ojfoawp efji awopefj opawejoapefj
-        pwThese arewef weoifja oawf oawfj ojfoawp efji awopefj opawejoapefj
-        pwThese arewef weoifja oawf oawfj ojfoawp efji awopefj opawejoapefj
-        pwThese arewef weoifja oawf oawfj ojfoawp efji awopefj opawejoapefj pw
-        These arewef weoifja oawf oawfj ojfoawp efji awopefj opawejoapefj pw
-      </p>
-      {projectItems.map((project: any, index: number) => (
-        <ProjectCard key={index} index={index} project={project} />
+    <div className="w-full flex flex-col items-center max-w-[1100px] mx-auto min-h-screen">
+      <div className="flex flex-wrap gap-2.5 h-full items-stretch">
+        {projectItems.map((project: any, index: number) => (
+          <div className='flex-1 flex h-full' key={index}>
+            <ProjectCard  index={index} project={project} />
+          </div>
       ))}
+      </div>
+      
     </div>
   </div>
   )
